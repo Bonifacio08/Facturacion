@@ -1,0 +1,101 @@
+﻿<Window x:Class="Facturacion.UI.Registros.rVentas"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Facturacion.UI.Registros"
+        mc:Ignorable="d"
+        Title="Factura" Height="590" Width="800">
+    <Grid>
+        <Label Content="VentaId" HorizontalAlignment="Left" Margin="18,17,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="TextVentaId" HorizontalAlignment="Left" Margin="21,41,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="87" Text="{Binding VentaId}"/>
+        <Label Content="Fecha" HorizontalAlignment="Left" Margin="18,64,0,0" VerticalAlignment="Top"/>
+        <DatePicker x:Name="DataFecha" HorizontalAlignment="Left" Margin="21,87,0,0" VerticalAlignment="Top" Width="142" SelectedDate="{Binding Fecha}"/>
+        <Button  Margin="113,41,0,0"  HorizontalAlignment="Left" Width="19" Height="18" VerticalAlignment="Top" Click="BtnBuscar">
+            <StackPanel Orientation="Horizontal" Width="73" Margin="-11,0,0,0">
+                <Image Source="/Resources/lupa (1).png" Height="14" Width="11" Margin="13,0,4,0"/>
+            </StackPanel>
+        </Button>
+
+
+        <StackPanel Orientation="Vertical" Margin="-42,175,0,0" HorizontalAlignment="Left" Width="644" Height="214" VerticalAlignment="Top">
+            <GroupBox Header="Detalle de Ventas" Width="550" Margin="0,-18,0,0" >
+
+                <StackPanel  Margin="0,0,-2,0">
+                    <StackPanel Orientation="Horizontal" Height="28" Margin="0,0,0,4">
+                        <Label Content="Producto" Height="26"/>
+                        <Label Content="Cant. de Producto" Margin="63,0,0,0"/>
+                        <Label Content="Precio" Margin="26,0,0,0"/>
+
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Height="26">
+                        <ComboBox x:Name="ProductoComboBox" Width="122" SelectedValue="{Binding ProductoId}"/>
+                        <TextBox x:Name="TextCantidadProducto" Width="87" Margin="14,0,0,0" Text="{Binding Detalle.CantidadProducto}"/>
+                        <TextBox x:Name="TextPrecio" Width="72" Margin="16,0,37,0" Text="{Binding Detalle.Precio}"/>
+                        <StackPanel Width="278" Height="26">
+                            <Button Width="88" Click="BtnAgregarFila" Height="24" HorizontalAlignment="Left" BorderThickness="1,1,1,1" Margin="1,0,0,0">
+                                <StackPanel Orientation="Horizontal" Margin="-10,0,0,0">
+                                    <Image Source="/Resources/signo-de-mas (1).png"/>
+                                    <Label Content="Agregar" FontSize="14" FontWeight="Bold" Height="32" Margin="-3,-4,-13,0"/>
+                                </StackPanel>
+                            </Button>
+
+                            <Button Width="88" Click="BtnRemoverFila" Height="24" BorderThickness="1,1,1,1" Margin="8,-24.1,0,0" HorizontalAlignment="Center" >
+                                <StackPanel Orientation="Horizontal" Margin="-7,0,0,0">
+                                    <Image Margin="5,0,25,0" Source="/Resources/boton-menos.png" Width="20" Height="20"/>
+                                    <Label Content="Eliminar" FontSize="14" FontWeight="Bold" Height="33" AutomationProperties.IsRowHeader="True" Margin="-28,-4,-6,-6" Width="65"/>
+                                </StackPanel>
+                            </Button>
+                        </StackPanel>
+
+                    </StackPanel>
+                    <StackPanel HorizontalAlignment="Left" Width="595" Height="141">
+                        <DataGrid x:Name="DetalleDataGrid" ItemsSource="{Binding Detalle}" Height="141" AutoGenerateColumns="False" Width="535" HorizontalAlignment="Left" IsReadOnly="True" >
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Venta Id" Binding="{Binding VentaId}" Visibility="Hidden"  />
+                                <DataGridTextColumn Header="ProductoId" Binding="{Binding Producto.ProductoId}" Width="100" />
+                                <DataGridTextColumn Header="Producto"  Binding="{Binding Producto.Descripcion}" IsReadOnly="True" Width="230"/>
+                                <DataGridTextColumn Header="Cantidad"  Binding="{Binding CantidadProducto}" Width="100"/>
+                                <DataGridTextColumn Header="Precio"   Binding="{Binding Precio}" Width="115"/>
+
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </StackPanel>
+
+                </StackPanel>
+            </GroupBox>
+        </StackPanel >
+
+        <StackPanel  Orientation="Vertical" HorizontalAlignment="Left" Width="570" Margin="6,397,0,0" Height="38" VerticalAlignment="Top">
+            <StackPanel Orientation="Horizontal" Margin="25,0,0,0" Width="595" HorizontalAlignment="Left" >
+                <Button Width="95" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="0,8,0,0" Click="BtnNuevo">
+                    <StackPanel Orientation="Horizontal" Width="77" Margin="-5,0,0,0">
+                        <Image />
+                        <Label Content="Nuevo" Margin="-3,-4.5,0,0"/>
+                    </StackPanel>
+                </Button>
+                <Button Width="95" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="10,8,0,0" Click="BtnGuardar" >
+                    <StackPanel Orientation="Horizontal" Width="77" Margin="-11,0,0,0">
+                        <Image />
+                        <Label Content="Guardar" Margin="-3,-4.5,0,0"/>
+                    </StackPanel>
+                </Button>
+                <Button Width="95" VerticalAlignment="Bottom" Margin="10,8,0,0" Click="BtnEliminar" >
+                    <StackPanel Orientation="Horizontal" Width="80" Margin="-11,0,0,0">
+                        <Image />
+                        <Label Content="Eliminar" Margin="-3,-4.5,0,0"/>
+                    </StackPanel>
+                </Button>
+                <Label Content="Total" Margin="120,1,0,0"/>
+                <TextBox x:Name="TextTotal" Width="74" Height="23"  Text="{Binding Total}" IsEnabled="False"  />
+            </StackPanel>
+
+        </StackPanel>
+        <ComboBox x:Name="ClienteComboBox" HorizontalAlignment="Left" Margin="158,139,0,0" VerticalAlignment="Top" Width="120" SelectedValue="{Binding Nombre}"/>
+        <Label Content="Cliente" HorizontalAlignment="Left" Margin="156,116,0,0" VerticalAlignment="Top" />
+        <ComboBox x:Name="UsuarioComboBox" SelectedValue="{Binding UsuarioId}" HorizontalAlignment="Left" Margin="432,139,0,0" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Usuario" HorizontalAlignment="Left" Margin="432,117,0,0" VerticalAlignment="Top"/>
+
+
+    </Grid>
+</Window>

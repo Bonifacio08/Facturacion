@@ -1,0 +1,54 @@
+﻿<Window x:Class="Facturacion.UI.Registros.rCliente"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Facturacion.UI.Registros"
+        mc:Ignorable="d"
+        Title="Registro de cliente" Height="450" Width="800">
+    <Grid>
+        <Label Content="Cliente ID" HorizontalAlignment="Left" Margin="5,23,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="TextClienteId" HorizontalAlignment="Left" Margin="71,26,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="86" Text="{Binding ClienteId}"/>
+        <Label Content="Direccion" HorizontalAlignment="Left" Margin="4,102,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="TextDireccion"  HorizontalAlignment="Left" Margin="71,105,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="171" Text="{Binding Direccion}"/>
+        <Label Content="Nombre" HorizontalAlignment="Left" Margin="12,80,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="TextNombre"  HorizontalAlignment="Left" Margin="71,80,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="171"  Text="{Binding Nombre}"/>
+        <Button HorizontalAlignment="Left" Margin="513,27,0,0" VerticalAlignment="Top" Width="26" Height="26" Click="BtnBuscar" >
+            <Image />
+
+        </Button>
+        <Button HorizontalAlignment="Left" Margin="39,265,0,0" VerticalAlignment="Top" Height="43" Width="83"  BorderThickness="1,1,1,1" Click="BtnCancelar" >
+            <StackPanel Orientation="Vertical" Width="74" VerticalAlignment="Center" Height="39" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Center">
+                <Image Source="/Resources/boton-menos.png" Height="30" />
+
+                <Label Content="Cancelar" RenderTransformOrigin="0.52,0.338" Height="23" Width="62" HorizontalContentAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Stretch" Margin="0,-7,0,0" />
+
+
+            </StackPanel>
+        </Button>
+        <Button HorizontalAlignment="Left" Margin="133,265,0,0" VerticalAlignment="Top" Height="43" Width="83" Click="BtnGuardar" >
+            <StackPanel Orientation="Vertical" Width="74" Height="39" HorizontalAlignment="Center" VerticalAlignment="Stretch">
+                <Image />
+                <Label Content="Guardar" HorizontalAlignment="Center" Margin="0,-4,0,0" />
+            </StackPanel>
+
+        </Button>
+        <Button HorizontalAlignment="Left" Margin="226,265,0,0" VerticalAlignment="Top" Height="42" Width="83" Click="BtnEliminar"  >
+            <StackPanel Orientation="Horizontal" Width="73" Height="38">
+                <Image Source="/Resources/1904654-cancel-close-cross-delete-reject-remove-stop_122504.png" Height="24" Width="38" Margin="-7,-1,0,0" />
+                <Label Content="Eliminar" Margin="-12,0,-50,0" Width="54" Height="26" />
+            </StackPanel>
+        </Button>
+
+        <DatePicker x:Name="FechaIngresoDatePicker" HorizontalAlignment="Left" Margin="71,50,0,0" VerticalAlignment="Top" SelectedDate="{Binding Fecha}" Width="147"/>
+        <Label Content="Fecha" HorizontalAlignment="Left" Margin="23,54,0,0" VerticalAlignment="Top"/>
+        <Label Content="Cedula" HorizontalAlignment="Left" Margin="290,27,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="TextCedula" Text="{Binding Cedula}" HorizontalAlignment="Left" Margin="349,31,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" />
+        <Label Content="Email" HorizontalAlignment="Left" Margin="28,135,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="TextEmail" Text="{Binding Email}" HorizontalAlignment="Left" Margin="71,139,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Celular" HorizontalAlignment="Left" Margin="290,60,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="TextCelular_Copy" Text="{Binding Celular}" HorizontalAlignment="Left" Margin="349,60,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Celular" HorizontalAlignment="Left" Margin="290,89,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="TextCelular_Copy1" Text="{Binding Celular}" HorizontalAlignment="Left" Margin="349,93,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+    </Grid>
+</Window>
